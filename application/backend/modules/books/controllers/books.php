@@ -115,22 +115,43 @@ class Books extends MY_Controller {
     public function destroy() {
         $items = json_decode($this->input->post('items'));
 
+        if(is_array($items)){
+            foreach ($items as $item)
+            {
+                if(!$this->destroyItem($item))
+                {
+                    $data['success'] = false;
+                    $data['title'] = 'Ошибка';
+                    $data['message'] = 'Ошибка';
+                    extjs_output($data, 'html');
+                    return;
+                }
+            }
+        } else {
+            if(!$this->destroyItem($items))
+            {
+                $data['success'] = false;
+                $data['title'] = 'Ошибка';
+                $data['message'] = 'Ошибка';
+                extjs_output($data, 'html');
+                return;
+            }
+        }
+
+        $data['success'] = true;
+        extjs_output($data, 'html');
+    }
+    
+    private function destroyItem($item)
+    {
         $filter = array(
             array(
                 'field' => 'id',
                 'operator' => '=',
-                'value' => $items->id ? $items->id : ''
+                'value' => $item->id ? $item->id : ''
             )
         );
-
-        if ($this->Books_model->delete_enry($filter)) {
-            $data['success'] = true;
-        } else {
-            $data['success'] = false;
-            $data['title'] = 'Ошибка';
-            $data['message'] = 'Ошибка';
-        }
-
-        extjs_output($data, 'html');
+        
+        return $this->Books_model->delete_enry($filter);
     }
 }

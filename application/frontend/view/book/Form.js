@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.view.book.Form', {
+Ext.define('BooksCI.view.book.Form', {
     extend: 'Ext.form.Panel',
     alias : 'widget.book-form',
     border : false,
@@ -23,25 +23,26 @@ Ext.define('CImeetsExtJS.view.book.Form', {
 				allowBlank: true
 			},
                         {
-                            xtype: 'combobox',
+                            xtype: 'combo',
                             name: 'genre',
                             fieldLabel: 'Жанр',
-                            store: new Ext.data.SimpleStore({
-                                id:1,
-                                fields: [ 'id', 'name' ],
-                                data:[
-                                    [1, 'Биография'],
-                                    [2, 'Вэстерн'],
-                                    [3, 'Детектив'],
-                                    [4, 'Драма'],
-                                    [5, 'Мемуары'],
-                                    [6, 'Новелла'],
-                                    [7, 'Повесть'],
-                                    [8, 'Поэма'],
-                                    [9, 'Фантастика']
-                                ]
-                            }),
-                            allowBlank: false
+                            displayField:'name',
+                            valueField:'id',
+                            store: 'Genres',
+                            editable: false,
+                            allowBlank: false,
+                            listeners: {
+                                change: function () {
+                                    this.up('form').form.findField('name').setValue(this.rawValue);
+                                }
+                            }
+                        },
+                        {
+                            xtype: 'textfield',
+                            name : 'name',
+                            fieldLabel: 'name',
+                            hidden:true,
+                            allowBlank: true
                         },
                         {
 				xtype: 'textfield',
@@ -59,7 +60,7 @@ Ext.define('CImeetsExtJS.view.book.Form', {
 				allowNegative:false,
 				allowDecimals:false,
 				maxValue:2050,
-				minValue:1900,
+				minValue:1000,
 				fieldLabel: 'Год выпуска',
 				name:'year'
 			}]

@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.view.Surface', {
+Ext.define('BooksCI.view.Surface', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.Surface',
 	
@@ -25,10 +25,10 @@ Ext.define('CImeetsExtJS.view.Surface', {
                 dock: 'bottom',
                 items: [{
                     xtype: 'tbtext',
-                    text: 'Logged in as ' + GlobalVars.userdata.user
+                    text: 'Ползователь ' + GlobalVars.userdata.user
                 },'->', {
                     xtype: 'button',
-                    text: 'Logout',
+                    text: 'Выход',
                     iconCls: 'fam door',
                     action: 'logout'
                 }]

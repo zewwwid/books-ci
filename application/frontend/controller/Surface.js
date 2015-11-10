@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.controller.Surface', {
+Ext.define('BooksCI.controller.Surface', {
     extend: 'Ext.app.Controller',
 
     views: ['Surface'],
@@ -17,6 +17,6 @@ Ext.define('CImeetsExtJS.controller.Surface', {
     },
     
     logout: function() {
-        document.location.href = '/auth/logout';
+        document.location.href = 'index.php/auth/logout';
     }
 });

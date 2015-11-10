@@ -1,7 +1,7 @@
-Ext.define('CImeetsExtJS.controller.Books', {
+Ext.define('BooksCI.controller.Books', {
     extend:	'Ext.app.Controller',
-    stores:	['Books'],
-    models:	['Book'],
+    stores:	['Books', 'Genres'],
+    models:	['Book','Genre'],
     views: 	['book.Grid', 'book.Window', 'book.Form', 'book.Surface'],
 
     refs: [{
@@ -30,6 +30,9 @@ Ext.define('CImeetsExtJS.controller.Books', {
             },
             'book-grid > toolbar > button[action=add]': {
             	click: this.addEditBook
+            },
+            'book-grid > toolbar > button[action=delete]': {
+            	click: this.deleteBooks
             },
             'menu[id=book-grid-ctx] > menuitem': {
                 click: this.listContextMenuItem
@@ -61,13 +64,13 @@ Ext.define('CImeetsExtJS.controller.Books', {
     },
     
     addEditBook: function(grid, record) {
-        var window = Ext.create('CImeetsExtJS.view.book.Window'),
+        var window = Ext.create('BooksCI.view.book.Window'),
             form = window.down('form');
             
         if(record.data) {
             form.loadRecord(record);
         }
-            
+          
         window.show();
     },
     
@@ -76,18 +79,19 @@ Ext.define('CImeetsExtJS.controller.Books', {
             form   = win.down('form'),
             record = form.getRecord(),
             values = form.getValues();
+            console.log(record, values);
         
         if (form.getForm().isValid()) {
             if (values.id > 0){
                 record.set(values);
             } else{
-                record = Ext.create('CImeetsExtJS.model.Book');
+                record = Ext.create('BooksCI.model.Book');
                 record.set(values);
                 this.getBooksStore().add(record);
             }
             
             win.close();
-            this.getBooksStore().sync().load();
+            this.getBooksStore().sync();
         }
     },
     
@@ -96,7 +100,21 @@ Ext.define('CImeetsExtJS.controller.Books', {
             Ext.Msg.confirm('Удаление', 'Вы действительно хотите удалить выбранную книгу?', function(btn) {
                 if (btn === 'yes') {
                     grid.getStore().remove(record);
-                    grid.getStore().sync();               
+                    grid.getStore().sync();
+                }
+            });
+        }
+    },
+    
+    deleteBooks: function() {
+        var grid = this.getBookGrid();
+        var store = grid.getStore();
+        var rows = grid.getSelectionModel().getSelection();
+        if(rows.length > 0){
+            Ext.Msg.confirm('Удаление', 'Вы действительно хотите удалить выбранные книги?', function(btn) {
+                if (btn === 'yes') {
+                    store.remove(rows);
+                    store.sync();
                 }
             });
         }

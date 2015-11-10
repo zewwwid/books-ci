@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.view.book.Window', {
+Ext.define('BooksCI.view.book.Window', {
     extend: 'Ext.window.Window',
     alias: 'widget.book-window',
     height: 220,

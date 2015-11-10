@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.view.Viewport', {
+Ext.define('BooksCI.view.Viewport', {
     extend: 'Ext.container.Viewport',
 
     initComponent: function() {

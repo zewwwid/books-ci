@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Books_model extends CI_Model {
+class Genres_model extends CI_Model {
 
 	private $table;
 	private $table_fields;
@@ -9,24 +9,20 @@ class Books_model extends CI_Model {
     function __construct() {
         parent::__construct();
 
-        $this->table = 'books';
+        $this->table = 'genres';
 
         $this->table_fields = array(
             $this->table.'.id',
-            $this->table.'.genre',
-            $this->table.'.author',
-            $this->table.'.title',
-            $this->table.'.year'
+            $this->table.'.name'
         );
 
         $this->table_fields_join = array();
     }
 
     function get_all_entries($filter = array(), $limit = '45', $offset = '0', $order = '') {
-        
-        $this->db->select(implode(',', $this->table_fields))->select('genres.name')->from('books')
-                ->join('genres', 'books.genre = genres.id', 'LEFT');
-                
+        $this->db->select(implode(', ', array_merge($this->table_fields, $this->table_fields_join)));
+        $this->db->from($this->table);
+
         if (is_array($filter) && count($filter) > 0) generate_filter($filter);
 
         if ($order > '') {

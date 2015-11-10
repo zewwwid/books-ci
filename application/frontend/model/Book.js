@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.model.Book', {
+Ext.define('BooksCI.model.Book', {
     extend: 'Ext.data.Model',
 
     fields: [{
@@ -7,6 +7,9 @@ Ext.define('CImeetsExtJS.model.Book', {
     },{
         name: 'genre',
         type: 'int'
+    },{
+        name: 'name',
+        type: 'string'
     },{
         name: 'author',
         type: 'string'

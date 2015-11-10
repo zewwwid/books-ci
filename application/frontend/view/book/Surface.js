@@ -1,4 +1,4 @@
-Ext.define('CImeetsExtJS.view.book.Surface', {
+Ext.define('BooksCI.view.book.Surface', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.book-surface',
     

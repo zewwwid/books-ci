@@ -35,7 +35,7 @@ Ext.require('Ext.data.StoreManager', function() {
     });
 });
 
-Ext.define('CImeetsExtJS.data.proxy', {
+Ext.define('BooksCI.data.proxy', {
     extend: 'Ext.data.proxy.Ajax',
     alias: 'proxy.custProxy',
     
@@ -64,7 +64,7 @@ Ext.define('CImeetsExtJS.data.proxy', {
 });
 
 Ext.application({
-    name: 'CImeetsExtJS',
+    name: 'BooksCI',
     appFolder: 'application/frontend',
     controllers: ['Surface', 'Books'],
     autoCreateViewport: true

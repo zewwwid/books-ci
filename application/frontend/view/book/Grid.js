@@ -1,9 +1,9 @@
-Ext.define('CImeetsExtJS.view.book.Grid' ,{
+Ext.define('BooksCI.view.book.Grid' ,{
     extend: 'Ext.grid.Panel',
     alias : 'widget.book-grid',
     id: 'bookGrid',
     store: 'Books',
-    
+    selModel : Ext.create('Ext.selection.CheckboxModel'),
     initComponent: function() {
         Ext.apply(this, {
             dockedItems: [{
@@ -33,9 +33,14 @@ Ext.define('CImeetsExtJS.view.book.Grid' ,{
                 dataIndex: 'id',
                 flex:0
             },{
+                header: 'genreID',
+                hidden:true,
+                dataIndex: 'genre',
+                flex:0
+            },{
                 header: 'Жанр',
-                flex:1,
-                dataIndex: 'genre'
+                flex:0,
+                dataIndex: 'name'
             },{
                 header: 'Автор',
                 flex:1,
@@ -46,7 +51,7 @@ Ext.define('CImeetsExtJS.view.book.Grid' ,{
                 dataIndex: 'title'
             },{
                 header: 'Год выпуска',
-                flex:1,
+                flex:0,
                 dataIndex: 'year'
             }]
         });

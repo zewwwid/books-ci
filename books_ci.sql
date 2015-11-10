@@ -15,11 +15,22 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `books`
---
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genres` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-DROP TABLE IF EXISTS `books`;
+LOCK TABLES `genres` WRITE;
+/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+INSERT INTO `genres` VALUES (1,'Бография'),(2,'Вестерн'),(3,'Детектив'),(4,'Драма'),(5,'Мемуары'),(6,'Новелла'),(7,'Повест'),(8,'Поэма'),(9,'Фантастика');
+/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `books` (
@@ -34,45 +45,28 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `books`
---
-
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,1,'author1','book1',1990);
+INSERT INTO `books` VALUES 
+    (1, 1, 'Айзексон Уолтер', 'Стив Джобс', 2011),
+    (2, 1, 'Залесский Константин','Сталин. Портрет на фоне войны', 2013),
+    (3, 2, 'Рид Томас Майн','Всадник без головы', 1865),
+    (4, 2, 'Рид Томас Майн','Белый вождь', 1855),
+    (5, 2, 'Шефер Джек','Шейн', 1949),
+    (6, 3, 'Конан Дойл Артур','Собака Баскервилей', 1902),
+    (7, 3, 'Адамс Гай','Шерлок и его интеллектуальный стиль', 2014),
+    (8, 4, 'Кантор Максим','Вечер с бабуином', 2007),
+    (9, 5, 'Нидал Оле','Верхом на тигре', 2012),
+    (10, 6, 'Лагерлёф Сельма','Легенды о Христе', 1904),
+    (11, 6, 'Вишневский Януш Леон','Сцены из жизни за стеной', 2008),
+    (12, 7, 'Гарсиа Маркес Габриэль','Полковнику никто не пишет', 1961),
+    (13, 8, 'Гоголь Николай','Мертвые души', 1842),
+    (14, 9, 'Брэдбери Рэй','Вино из одуванчиков', 1957),
+    (15, 9, 'Панов Вадим','Костры на алтарях ', 2007);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `genres`
---
 
-DROP TABLE IF EXISTS `genres`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `genres` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `genres`
---
-
-LOCK TABLES `genres` WRITE;
-/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
-INSERT INTO `genres` VALUES (1,'Biografiya'),(2,'Vestern'),(3,'Detectiv'),(4,'Drama'),(5,'Memuari'),(6,'Novella'),(7,'Povest'),(8,'Poema'),(9,'Fantastica');
-/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
@@ -82,10 +76,6 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users`
---
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;

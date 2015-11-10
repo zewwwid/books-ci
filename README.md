@@ -1,2 +1,2 @@
 # books-ci
-Каталог книг на CodeIgniter 3.0.3 и ExtJS 5.1.0
+Каталог книг на CodeIgniter 2.1.3 и ExtJS 4.2

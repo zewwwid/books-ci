@@ -1,6 +1,6 @@
-Ext.define('BooksCI.store.Books', {
+Ext.define('BooksCI.store.Genres', {
     extend: 'Ext.data.Store',
-    model: 'BooksCI.model.Book',
+    model: 'BooksCI.model.Genre',
     autoLoad: true,
     remoteSort: true,
     pageSize: 45,
